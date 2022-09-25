@@ -59,7 +59,7 @@ This XCode project has been imported the [AppRTCMobile](https://webrtc.googlesou
 
 * Delete all files of WebRTCDemo-macOS group
 
-* Add ../webrtc/src/examples/objc/* to WebRTCDemo-macOS group, delete tests, mac of WebRTCDemo-macOS/AppRTCMobile group.
+* Add ../webrtc/src/examples/objc/* to WebRTCDemo-macOS group, delete tests, ios of WebRTCDemo-macOS/AppRTCMobile group.
 
 * Configure targets
     * TARGETS -> WebRTCDemo-macOS -> Build Phases -> Copy Bundle Resources  
