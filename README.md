@@ -27,32 +27,37 @@ MACOS=true IOS=true BUILD_VP9=true DEBUG=true ./build.sh
 
 This XCode project has been imported the [AppRTCMobile](https://webrtc.googlesource.com/src/+/refs/heads/main/examples/objc/). If you want to create the Xcode project manually, please refer to the following steps.
 
-- Create a new Xcode project and stored in $HOME/work/
-    - File -> New -> Project... -> macOS -> App  
-        - Product Name: WebRTCDemo-macOS  
-        - Language: Objective-C  
+- Create a new Xcode project and save to $HOME/work/
+  - File -> New -> Project... -> macOS -> App
+    - Product Name: WebRTCDemo-macOS
+    - Language: Objective-C
 
 - Delete all files of WebRTCDemo-macOS group, except *.entitlements.
 
-- Add ../webrtc/src/examples/objc/* to WebRTCDemo-macOS group, delete tests, ios of WebRTCDemo-macOS/AppRTCMobile group.
+- Add Files to WebRTCDemo-macOS group
+  - Add ../webrtc/src/examples/objc/* to WebRTCDemo-macOS group
+    - Added folders: Create groups
+    - Add to targets: WebRTCDemo-macOS
+
+  - Delete tests, ios of WebRTCDemo-macOS/AppRTCMobile group.
 
 - Configure targets
-    - TARGETS -> WebRTCDemo-macOS -> Build Phases -> Copy Bundle Resources  
-        Delete the info.plist (Fixed building error: Multiple commands produce '.../Info.plist')
+    - TARGETS -> WebRTCDemo-macOS -> Build Phases -> Copy Bundle Resources
+        Delete the info.plist, fix building error: Multiple commands produce '.../Info.plist'
 
-    - TARGETS -> WebRTCDemo-macOS -> Build Settings  
-        - Info.plist File: ../webrtc/src/examples/objc/AppRTCMobile/mac/Info.plist  
-        - Header Search Paths: "$(SRCROOT)/../webrtc/src" "$(SRCROOT)/../webrtc/src/sdk/objc/base" "$(SRCROOT)/../webrtc/src/examples/objc/AppRTCMobile" 
+    - TARGETS -> WebRTCDemo-macOS -> Build Settings
+        - Info.plist File: ../webrtc/src/examples/objc/AppRTCMobile/mac/Info.plist
+        - Header Search Paths: "$(SRCROOT)/../webrtc/src" "$(SRCROOT)/../webrtc/src/sdk/objc/base" "$(SRCROOT)/../webrtc/src/examples/objc/AppRTCMobile"
 
-    - TARGETS -> WebRTCDemo-macOS -> General -> Framework,Librares, and Embedded Content  
-        Add WebRTC.xcframework of webrtc/src/out/ and set Embed & Sign.
+    - TARGETS -> WebRTCDemo-macOS -> General -> Framework,Librares, and Embedded Content
+        Add ../webrtc/src/out/WebRTC.xcframework, and set Embed & Sign.
 
-    - TARGETS -> WebRTCDemo-macOS -> Signing & Capabilities  
+    - TARGETS -> WebRTCDemo-macOS -> Signing & Capabilities
         Checked the following options (Fixed runing error: "Operation not permitted"):
         - Incoming Connections (Server)
-        - Outgoing Connections (Client)  
-        - Camera  
-        - Audio Input  
+        - Outgoing Connections (Client)
+        - Camera
+        - Audio Input
 
 ### License
 
